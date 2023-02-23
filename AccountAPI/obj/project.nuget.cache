@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "y7KZp0SazNJQcM4YbMkAaLSf9YZGdyUy79OUVyO57zzhliEG9Tu+nYf7nOi7C7fc3qL1KJ6n3RdowzoCIVFZ3Q==",
+  "success": true,
+  "projectFilePath": "A:\\CSharpPROJECTS\\MicroservicesTest\\AccountAPI\\AccountAPI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\akope\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\akope\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\akope\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\akope\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\akope\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\akope\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
