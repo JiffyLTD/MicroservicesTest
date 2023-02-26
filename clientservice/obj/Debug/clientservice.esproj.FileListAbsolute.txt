@@ -1,0 +1,2 @@
+A:\CSharpPROJECTS\MicroservicesTest\ClientService\obj\Debug\clientservice.esproj.SuggestedBindingRedirects.cache
+A:\CSharpPROJECTS\MicroservicesTest\ClientService\obj\Debug\clientservice.esproj.CoreCompileInputs.cache
