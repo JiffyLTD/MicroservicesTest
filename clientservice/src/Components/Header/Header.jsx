@@ -20,8 +20,8 @@ const Header = () => {
                     <li><a href="/about" className="nav-link px-2 link-light">О нас</a></li>
                 </ul>
                 <div className="px-5 col-md-3 text-end">
-                    <a href="#"><button type="button" className="btn btn-outline-primary me-2 fs-5">Вход</button></a>
-                    <a href="#"><button type="button" className="btn btn-primary fs-5">Регистрация</button></a>
+                    <a href="/login"><button type="button" className="btn btn-outline-primary me-2 fs-5">Вход</button></a>
+                    <a href="/register"><button type="button" className="btn btn-primary fs-5">Регистрация</button></a>
                 </div>
             </div>
         </div>

@@ -27,7 +27,7 @@ const Main = () => {
     <div>
       <PostMain post={postObject} />
       {posts.map((post) => (
-        <Post post={post} />
+        <Post key={post.id} post={post} />
       ))}
     </div>
   );
