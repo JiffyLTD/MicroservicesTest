@@ -11,9 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{DB
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "clientservice", "ClientService\clientservice.esproj", "{1757B5CF-CD31-458A-A953-AB6383AB6A6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsPostsAPI", "NewsPostsAPI\NewsPostsAPI.csproj", "{F11EADF0-3D8C-4EB5-985A-498FC6AA8098}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsPostsAPI", "NewsPostsAPI\NewsPostsAPI.csproj", "{F11EADF0-3D8C-4EB5-985A-498FC6AA8098}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountAPI", "AccountAPI\AccountAPI.csproj", "{AD349046-A5B7-41FE-A6D2-900409F00103}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountAPI", "AccountAPI\AccountAPI.csproj", "{AD349046-A5B7-41FE-A6D2-900409F00103}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

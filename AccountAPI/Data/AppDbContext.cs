@@ -12,7 +12,7 @@ namespace AccountAPI.Data
             Database.EnsureCreated();
         }
 
-        public new DbSet<User>? Users { get; set; }
+        public new DbSet<User> Users { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

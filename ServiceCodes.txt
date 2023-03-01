@@ -1,0 +1,8 @@
+StatusCode - objectType - status
+
+200 - message - successful
+201 - json - successful
+400 - message or IEnumarable<IdentityError> - error
+409 -  IEnumarable<IdentityError> - error
+
+

@@ -1,15 +1,7 @@
 ﻿using AccountAPI.Auth;
-using AccountAPI.Data;
 using AccountAPI.Models;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
+using AccountAPI.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using System;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 
 namespace AccountAPI.Controllers
 {
@@ -17,28 +9,28 @@ namespace AccountAPI.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        private readonly UserManager<User> _userManager;
-
-        public AccountController(UserManager<User> userManager)
+        private readonly IUserRepository _userRepository;
+        private readonly IAccountRepository _accountRepository;
+        public AccountController(IUserRepository userRepository, IAccountRepository accountRepository)
         {
-            _userManager = userManager;
+            _userRepository = userRepository;
+            _accountRepository = accountRepository;
         }
 
         [HttpPost]
         [Route("/signin")]
         public async Task<IResult> SignIn(LoginModel model)
         {
-            User? user = await _userManager.FindByNameAsync(model.Username);
+            User? user = await _userRepository.GetUserByName(model.Username);
 
-            if (user == null) { return Results.Unauthorized(); }
+            if (user == null) { return Results.BadRequest("Данный пользователь не найден"); }
 
-            var passCheck = await _userManager.CheckPasswordAsync(user, model.Password);
+            var passCheck = await _accountRepository.CheckUserPassword(user, model.Password);
 
-            if (!passCheck) { return Results.Unauthorized(); }
+            if (!passCheck) { return Results.BadRequest("Неверный пароль"); }
 
-            // создаем JWT-токен
-            var encodedJwt = CreateJWT.GetToken(user.UserName);
-            // формируем ответ
+            var encodedJwt = CreateJWT.GetToken(user.UserName); 
+
             var response = new
             {
                 AccessToken = encodedJwt,
@@ -46,29 +38,25 @@ namespace AccountAPI.Controllers
                 user.Id
             };
 
-            return Results.Json(response,null , "application/json" , StatusCodes.Status200OK);
-        }
+            return Results.Ok(response);
+        }   
 
         [HttpPost]
         [Route("/signup")]
         public async Task<IResult> SignUp(RegisterModel model)
         {
-            User? user = await _userManager.FindByNameAsync(model.Email);
+            User? user = await _userRepository.GetUserByName(model.Email);
 
-            if (user != null) { return Results.Text("Пользователь уже зарегестрирован"); }
+            if (user != null) { return  Results.BadRequest("Пользователь уже зарегестрирован"); }
 
             User newUser = new()
             {
-                UserName = model.Email,
+                UserName = model.Login,
                 Email = model.Email,
-                Role = "User",
-                PhoneNumber = model.PhoneNumber,
-                Name = model.Name,
-                Surname = model.Surname,
-                Patronymic = model.Patronymic
+                Role = "User"
             };
 
-            var result = await _userManager.CreateAsync(newUser, model.Password);
+            var result = await _accountRepository.CreateUser(newUser, model.Password);
 
             if(result.Succeeded)
             { 
@@ -76,7 +64,7 @@ namespace AccountAPI.Controllers
             }
             else
             {
-                return Results.Problem(result.Errors.ToString());
+                return Results.BadRequest(result.Errors);
             }
         }
     }

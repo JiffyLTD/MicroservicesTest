@@ -1,6 +1,8 @@
 using AccountAPI.Auth;
 using AccountAPI.Data;
 using AccountAPI.Models;
+using AccountAPI.Repositories;
+using AccountAPI.Repositories.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +20,10 @@ builder.Services.AddSwaggerGen();
 
 // Add Database MS SQL SERVER
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+//Add repositories
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 
 // Add JWT Tokens
 builder.Services.AddAuthorization();

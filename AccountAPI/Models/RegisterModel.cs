@@ -6,17 +6,11 @@ namespace AccountAPI.Models
     {
         [EmailAddress]
         [Required(ErrorMessage = "Необходим Email")]
-        public string? Email { get; set; }
+        public string Email { get; set; } = null!;
+        [Required(ErrorMessage = "Необходим логин")]
+        public string Login { get; set; } = null!;
 
         [Required(ErrorMessage = "Необходим пароль")]
-        public string? Password { get; set; }
-
-        [Required(ErrorMessage = "Обязательно для заполнения")]
-        public string? Name { get; set; }
-        [Required(ErrorMessage = "Обязательно для заполнения")]
-        public string? Surname { get; set; }
-        public string? Patronymic { get; set; }
-        [Required(ErrorMessage = "Необходим номер телефона")]
-        public string? PhoneNumber { get; set; }
+        public string Password { get; set; } = null!;
     }
 }

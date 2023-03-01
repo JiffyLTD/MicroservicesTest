@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="navbar navbar-light px-5 fixed-bottom">
+    <footer className="navbar navbar-light px-5 fixed-bottom" style={{background: '#010A19'}}>
       <div className="col-md-4 d-flex align-items-center">
         <span className="mb-3 mb-md-0 text-light fs-4">© 2023 JiffyLTD, Inc</span>
       </div>

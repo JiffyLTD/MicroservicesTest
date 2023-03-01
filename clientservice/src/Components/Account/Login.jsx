@@ -1,6 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
+import AccountServiceAPI from './../../API/Account/AccountServiceAPI';
 
-const login = () => {
+const Login = () => {
+  const [login, setLogin] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const SignIn = async (e) =>{
+    e.preventDefault();
+    let signInResult = await AccountServiceAPI.SignIn(login, password);
+
+    if (signInResult.data.statusCode === 200) {
+      window.location.assign('/main');
+      localStorage.setItem(
+        "AccessToken",
+        signInResult.data.value.accessToken
+      );
+      localStorage.setItem("UserRole", signInResult.data.value.role);
+      localStorage.setItem("UserId", signInResult.data.value.id);
+    } else {
+      setError(signInResult.data.value); //errors
+    }
+  }
+
   return (
     <div className="container px-4 py-5" id="icon-grid">
       <div className="row align-items-center">
@@ -25,6 +47,7 @@ const login = () => {
                 style={{ background: "#00183A" }}
                 id="floatingInput"
                 placeholder="Admin"
+                onChange={(event) => setLogin(event.target.value)}
               />
               <label className="text-light" htmlFor="floatingInput">
                 Логин
@@ -37,6 +60,7 @@ const login = () => {
                 style={{ background: "#00183A" }}
                 id="floatingPassword"
                 placeholder="Password"
+                onChange={(event) => setPassword(event.target.value)}
               />
               <label className="text-light" htmlFor="floatingPassword">
                 Пароль
@@ -47,8 +71,8 @@ const login = () => {
                 <input type="checkbox" /> Запомнить меня
               </label>
             </div>
-            <span className="text-danger"></span>
-            <button className="w-100 btn btn-lg btn-primary" type="submit">
+            <span className="text-danger">{error}</span>
+            <button className="w-100 btn btn-lg btn-primary" type="submit" onClick={SignIn}>
               Вход
             </button>
 
@@ -62,4 +86,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;
