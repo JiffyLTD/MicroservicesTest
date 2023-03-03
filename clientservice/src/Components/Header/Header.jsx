@@ -69,7 +69,11 @@ const Header = () => {
                   Профиль
                 </button>
               </a>
-              <button type="button" className="btn btn-primary fs-5" onClick={SignOut}>
+              <button
+                type="button"
+                className="btn btn-primary fs-5"
+                onClick={SignOut}
+              >
                 Выйти
               </button>
             </div>

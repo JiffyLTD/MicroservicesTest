@@ -34,8 +34,8 @@ namespace AccountAPI.Controllers
             var response = new
             {
                 AccessToken = encodedJwt,
-                user.Role,
-                user.Id
+                user.Id,
+                role = user.UserRole.RoleName
             };
 
             return Results.Ok(response);
@@ -53,7 +53,7 @@ namespace AccountAPI.Controllers
             {
                 UserName = model.Login,
                 Email = model.Email,
-                Role = "User"
+                RoleId = 1
             };
 
             var result = await _accountRepository.CreateUser(newUser, model.Password);

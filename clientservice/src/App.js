@@ -8,6 +8,7 @@ import Login from "./Components/Account/Login";
 import Register from "./Components/Account/Register";
 import { AuthContext } from "./Context/index";
 import { useEffect, useState } from "react";
+import Profile from "./Pages/Profile";
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
@@ -30,6 +31,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/main" element={<Main />} />
+            <Route path="/profile" element={<Profile/>}/>
             <Route path="/error" element={<Error />} />
             <Route path="/" element={<Navigate replace to="/main" />} />
             <Route path="*" element={<Navigate replace to="/error" />} />

@@ -9,7 +9,7 @@ namespace AccountAPI.Auth
     {
         public static string GetToken(string userName)
         {
-            var claims = new List<Claim> { new Claim(ClaimTypes.Name, userName) };
+            var claims = new List<Claim> { new Claim(ClaimTypes.Name, userName, ClaimTypes.Role, "User") };
 
             var jwt = new JwtSecurityToken(
                     issuer: AuthOptions.ISSUER,
