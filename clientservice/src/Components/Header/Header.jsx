@@ -22,7 +22,6 @@ const Header = () => {
       <div className="container">
         <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
           <Logo />
-
           <HeadLinks />
           {isAuth ? 
           (
