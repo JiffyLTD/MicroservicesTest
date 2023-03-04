@@ -28,7 +28,7 @@ export default class AccountServiceAPI {
         Role: role,
       },
     });
-    console.log(result.data.value)
-    return result.data.value;
+
+    return result.data;
   }
 }

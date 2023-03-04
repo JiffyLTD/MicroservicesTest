@@ -4,12 +4,11 @@ import AccountServiceAPI from "./../API/Account/AccountServiceAPI";
 import { useState } from "react";
 
 const Profile = () => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState();
 
   async function GetUserData() {
     let userData = await AccountServiceAPI.Profile();
-    setUser(userData);
-    console.log(userData)
+    setUser();
     console.log(user)
   };
 
@@ -29,7 +28,7 @@ const Profile = () => {
           Личные данные
         </h4>
         <div className="col-lg-3 text-center text-lg-start">
-          <form className="p-1 p-md-1  rounded-3 ">
+          <form className="p-1 p-md-1  rounded-3">
             <div className="form-floating mb-3">
               <input
                 type="text"
