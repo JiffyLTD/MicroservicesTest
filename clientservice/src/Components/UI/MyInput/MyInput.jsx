@@ -1,6 +1,6 @@
 import React from "react";
 
-const MyInput = ({inputName, inputControl,placeHold, inputType}) => {
+const MyInput = ({inputName, inputControl,placeHold, inputType, error}) => {
   return (
     <div className="form-floating mb-3">
       <input
@@ -14,6 +14,7 @@ const MyInput = ({inputName, inputControl,placeHold, inputType}) => {
       <label className="text-light" htmlFor="floatingInput">
         {inputName}
       </label>
+      <span className="text-danger">{error}</span>
     </div>
   );
 };

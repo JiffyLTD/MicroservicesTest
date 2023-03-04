@@ -6,13 +6,12 @@ import { useState } from "react";
 const Profile = () => {
   const [user, setUser] = useState();
 
-  async function GetUserData() {
-    let userData = await AccountServiceAPI.Profile();
-    setUser();
-    console.log(user)
-  };
-
-  useEffect( () => {
+  useEffect(  () => {
+    async function GetUserData() {
+      let userData = await AccountServiceAPI.Profile();
+      setUser(userData);
+      console.log(user)
+    };
     GetUserData();
   },[]);
 

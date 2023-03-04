@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import AccountServiceAPI from "../../API/Account/AccountServiceAPI";
+import MyForm from "../../Components/UI/MyForm/MyForm";
+import MyInput from "../../Components/UI/MyInput/MyInput";
+import FillButton from "./../../Components/UI/FillButton/FillButton";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -117,75 +120,43 @@ const Register = () => {
           </p>
         </div>
         <div className="col-md-10 mx-auto col-lg-5">
-          <form
-            className="p-4 p-md-5  rounded-3"
-            style={{ background: "#00183A" }}
-          >
-            <div className="form-floating mb-3">
-              <input
-                style={{ background: "#00183A" }}
-                type="email"
-                className="form-control  text-light"
-                id="floatingInput"
-                placeholder="name@example.com"
-                onChange={(event) => setEmail(event.target.value)}
+          <MyForm>
+            <MyInput
+              inputType="email"
+              placeHold="name@example.com"
+              inputName="Email"
+              inputControl={(event) => setEmail(event.target.value)}
+              error={validateEmail().message}
+            />
+            <MyInput
+              inputType="text"
+              placeHold="Username"
+              inputName="Имя пользователя"
+              inputControl={(event) => setLogin(event.target.value)}
+            />
+            <MyInput
+              inputType="password"
+              placeHold="Password"
+              inputName="Пароль"
+              inputControl={(event) => setPass(event.target.value)}
+              error={passValid().message}
+            />
+            <MyInput
+              inputType="password"
+              placeHold="Password"
+              inputName="Подтвердите пароль"
+              inputControl={(event) => setConfPass(event.target.value)}
+              error={confPassValid().message}
+            />
+            <div className="text-end">
+              <FillButton
+                butName="Регистрация"
+                func={register}
+                dis={registerFormValid()}
               />
-              <label className="text-light" htmlFor="floatingInput">
-                Email
-              </label>
-              <span className="text-danger">{validateEmail().message}</span>
             </div>
-            <div className="form-floating mb-3">
-              <input
-                style={{ background: "#00183A" }}
-                className="form-control  text-light"
-                id="floatingInput"
-                placeholder="Имя пользователя"
-                onChange={(event) => setLogin(event.target.value)}
-              />
-              <label className="text-light" htmlFor="floatingInput">
-                Логин
-              </label>
-              <span className="text-danger"></span>
-            </div>
-            <div className="form-floating mb-3">
-              <input
-                style={{ background: "#00183A" }}
-                type="password"
-                className="form-control  text-light"
-                id="floatingPassword"
-                placeholder="Password"
-                onChange={(event) => setPass(event.target.value)}
-              />
-              <label className="text-light" htmlFor="floatingPassword">
-                Пароль
-              </label>
-              <span className="text-danger">{passValid().message}</span>
-            </div>
-            <div className="form-floating mb-3">
-              <input
-                style={{ background: "#00183A" }}
-                type="password"
-                className="form-control  text-light"
-                id="floatingPassword"
-                placeholder="Password"
-                onChange={(event) => setConfPass(event.target.value)}
-              />
-              <label className="text-light" htmlFor="floatingPassword">
-                Подтвердите пароль
-              </label>
-              <span className="text-danger">{confPassValid().message}</span>
-            </div>
-            <button
-              className="w-100 btn btn-lg btn-primary"
-              type="submit"
-              disabled={registerFormValid()}
-              onClick={register}
-            >
-              Регистрация
-            </button>
             <span className="text-danger">{error}</span>
-          </form>
+          </MyForm>
         </div>
       </div>
     </div>
